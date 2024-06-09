@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { provideHttpClient } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { ShopModule } from './shop/shop.module';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +16,8 @@ import { ShopModule } from './shop/shop.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
-    ShopModule
+    ShopModule,
+    HomeModule
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent],
