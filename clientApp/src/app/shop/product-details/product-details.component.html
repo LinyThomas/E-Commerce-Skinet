@@ -27,7 +27,8 @@
           style="cursor: pointer; font-size: 2em"
           (click)="incrementQuantity()"
         ></i>
-        <button class="btn btn-outline-primary ms-4" (click)="updateBasket()">
+        <button class="btn btn-outline-primary ms-4" (click)="updateBasket()"
+        [disabled]="quantity===quantityInBasket">
           {{buttonText}}
         </button>
       </div>
