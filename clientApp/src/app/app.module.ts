@@ -13,6 +13,7 @@ import { loadingInterceptor } from './core/interceptors/loading.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BasketModule } from './basket/basket.module';
 import { CheckoutModule } from './checkout/checkout.module';
+import { AccountModule } from './account/account.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +26,8 @@ import { CheckoutModule } from './checkout/checkout.module';
     HomeModule,
     NgxSpinnerModule,
     BasketModule,
-    CheckoutModule
+    CheckoutModule,
+    AccountModule,
   ],
   providers: [provideHttpClient(withInterceptors([errorInterceptor,loadingInterceptor]))],
   bootstrap: [AppComponent],

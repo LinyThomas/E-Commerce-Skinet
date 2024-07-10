@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { BreadcrumbComponent, BreadcrumbItemDirective } from 'xng-breadcrumb';
 import { BasketService } from './basket/basket.service';
 import { DOCUMENT } from '@angular/common';
+import { AccountService } from './account/account.service';
 
 @Component({
   selector: 'app-root',
@@ -13,14 +14,24 @@ export class AppComponent implements OnInit {
 
   constructor(
     private basketService: BasketService,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    private accountService:AccountService 
   ) {}
   ngOnInit(): void {
-     const localStorage = document.defaultView?.localStorage;
+     this.loadBasket();
+    this.loadCurrentUser();
+   
+  }
 
-    if (localStorage) {
-      const basketId = localStorage.getItem('basket_id');
-      if(basketId) this.basketService.getBasket(basketId)
-    }
+  loadCurrentUser() {
+    const token = localStorage.getItem('token');
+    if (token)
+      this.accountService.loadCurrentUser(token).subscribe()
+  }
+
+  loadBasket() {
+ const basketId = localStorage.getItem('basket_id');
+    if (basketId)
+      this.basketService.getBasket(basketId);
   }
 }
