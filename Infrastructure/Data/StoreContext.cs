@@ -2,6 +2,7 @@
 
 using System.Reflection;
 using Core.Entities;
+using Core.Entities.OrderAggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using SQLitePCL;
@@ -13,9 +14,12 @@ namespace Infrastructure.Data
         public StoreContext(DbContextOptions<StoreContext> options) : base(options)
         {
         }
-        public DbSet<Product> products { get; set; }
-        public DbSet<ProductType> productTypes { get; set; }
-        public DbSet<ProductBrand> productBrands { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductType> PoductTypes { get; set; }
+        public DbSet<ProductBrand> ProductBrands { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
