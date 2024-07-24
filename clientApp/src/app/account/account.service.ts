@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { BehaviorSubject, map, of, ReplaySubject} from 'rxjs';
-import { User } from '../shared/models/user';
+import { BehaviorSubject, map, of, ReplaySubject } from 'rxjs';
+import { Address, User } from '../shared/models/user';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -28,8 +28,7 @@ export class AccountService {
           localStorage.setItem('token', user.token);
           this.currentUserSource.next(user);
           return user;
-        }
-        else {
+        } else {
           return null;
         }
       })
@@ -64,5 +63,13 @@ export class AccountService {
     return this.http.get<boolean>(
       this.baseUrl + 'account/emailexists?email=' + email
     );
+  }
+
+  getUserAddress() {
+    return this.http.get<Address>(this.baseUrl + 'account/address');
+  }
+
+  updateUserAddress(address:Address) {
+    return this.http.put<Address>(this.baseUrl + 'account/address',address);
   }
 }
