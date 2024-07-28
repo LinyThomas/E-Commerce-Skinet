@@ -53,7 +53,7 @@ namespace API.Controllers
             var email = HttpContext.User.RetrieveEmailFromPrincipal();
             var order = await _orderService.GetOrderByIdAsync(id, email);
             if (order == null) return NotFound(new ApiResponse(404, "Order not found"));
-            return _mapper.Map<OrderToReturnDto>(order) ;
+            return _mapper.Map<OrderToReturnDto>(order);
         }
 
         [HttpGet("deliverymethods")]
