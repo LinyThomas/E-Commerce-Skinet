@@ -9,6 +9,7 @@ import { PageChangedEvent } from 'ngx-bootstrap/pagination';
 export class PagerComponent {
   @Input() totalCount?: number;
   @Input() pageSize?: number;
+  @Input() pageNumber?: number;
   @Output() pageChanged = new EventEmitter<number>();
 
   onPagerChanged(event: any) {
